@@ -1290,6 +1290,12 @@ bool WINAPI CascReadFile(HANDLE hFile, void * pvBuffer, DWORD dwBytesToRead, PDW
         case CascCacheLastFrame:
             dwBytesRead2 = ReadFile_FrameCached(hf, pbBuffer, StartOffset, EndOffset);
             break;
+
+        // Handle invalid or unexpected cache strategies
+        default:
+            SetCascError(ERROR_INVALID_PARAMETER);
+            dwBytesRead2 = 0;
+            break;
     }
 
     // If the second-stage-read failed, we invalidate the entire operation and return 0 bytes read
