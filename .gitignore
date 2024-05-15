@@ -45,3 +45,7 @@
 
 # Intermediate directory
 /casc.dir/
+
+# CMake framework directory
+casc.framework/
+
